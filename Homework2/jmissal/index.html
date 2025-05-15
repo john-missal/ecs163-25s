@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" style="width:100%;height:100%;">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Music & Mental Health Dashboard">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music & Mental Health Dashboard</title>
+  <style>
+    body { font-family: sans-serif; margin: 10px; }
+    .intro h1 { margin-bottom: 0.2em; font-size: 2em; }
+    .intro p { margin-top: 0; color: #333; }
+    #rationale { margin: 0.5em 0 1em; font-style: italic; color: #444; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+      grid-auto-rows: auto;
+    }
+    #ov-chart, #fc-chart { grid-row: 1; }
+    #ad-chart            { grid-column: 1 / -1; grid-row: 2; }
+
+    .chart {
+      background: #fafafa;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+    }
+    .chart h2 { margin: 0.2em 0; font-size: 1.2em; }
+    .chart p  { margin: 0 0 0.6em; color: #555; }
+
+    .chart svg {
+      width: 100%;
+      display: block;
+    }
+    #ov-chart svg, #fc-chart svg {
+      height: 400px;
+    }
+    #ad-chart svg {
+      height: auto;
+    }
+
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro">
+    <h1>🎵 Music & Mental Health Dashboard</h1>
+    <p>
+      Explore how listening habits impact mental health.
+      This dashboard contains three views:
+    </p>
+    <ol>
+      <li><strong>Overview</strong>: Histogram of daily listening hours.</li>
+      <li><strong>Genre Breakdown</strong>: Pie chart of favorite genres.</li>
+      <li><strong>Genre → Music Effects Dendrogram</strong>: For each genre, counts of Improve / No effect / Worsen.</li>
+    </ol>
+    <p id="rationale">
+      I start with listening time as the baseline exposure (histogram), then show which genres respondents prefer (pie), and finally drill down into how each genre’s perceived impact improving, neutral, or worsening maps to mental-health outcomes (dendrogram). This progression follows the focus+context paradigm: broad patterns first, then detailed effects.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="chart" id="ov-chart">
+      <h2>Overview</h2>
+      <p>Distribution of daily listening hours (hover for counts).</p>
+      <svg></svg>
+    </div>
+
+    <div class="chart" id="fc-chart">
+      <h2>Genre Breakdown</h2>
+      <p>Distribution of respondents’ favorite genres (hover for %).</p>
+      <svg></svg>
+    </div>
+
+    <div class="chart" id="ad-chart">
+      <h2>Genre → Music Effects Dendrogram</h2>
+      <p>Each genre branches to leaves showing counts of “Improve,” “No effect,” and “Worsen” impact on respondents mental health.</p>
+      <svg></svg>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
