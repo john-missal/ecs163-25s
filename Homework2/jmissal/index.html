@@ -7,9 +7,6 @@
   <title>Music & Mental Health Dashboard</title>
   <style>
     body { font-family: sans-serif; margin: 10px; }
-    .intro h1 { margin-bottom: 0.2em; font-size: 2em; }
-    .intro p { margin-top: 0; color: #333; }
-    #rationale { margin: 0.5em 0 1em; font-style: italic; color: #444; }
 
     .grid {
       display: grid;
@@ -54,21 +51,6 @@
   </style>
 </head>
 <body>
-  <div class="intro">
-    <h1>🎵 Music & Mental Health Dashboard</h1>
-    <p>
-      Explore how listening habits impact mental health.
-      This dashboard contains three views:
-    </p>
-    <ol>
-      <li><strong>Overview</strong>: Histogram of daily listening hours.</li>
-      <li><strong>Genre Breakdown</strong>: Pie chart of favorite genres.</li>
-      <li><strong>Genre → Music Effects Dendrogram</strong>: For each genre, counts of Improve / No effect / Worsen.</li>
-    </ol>
-    <p id="rationale">
-      I start with listening time as the baseline exposure (histogram), then show which genres respondents prefer (pie), and finally drill down into how each genre’s perceived impact improving, neutral, or worsening maps to mental-health outcomes (dendrogram). This progression follows the focus+context paradigm: broad patterns first, then detailed effects.
-    </p>
-  </div>
 
   <div class="grid">
     <div class="chart" id="ov-chart">
@@ -85,7 +67,7 @@
 
     <div class="chart" id="ad-chart">
       <h2>Genre → Music Effects Dendrogram</h2>
-      <p>Each genre branches to leaves showing counts of “Improve,” “No effect,” and “Worsen” impact on respondents mental health.</p>
+      <p>Each genre branches to leaves showing counts of Improve, No effect, and Worsen.</p>
       <svg></svg>
     </div>
   </div>
